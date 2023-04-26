@@ -7,8 +7,6 @@
 </head>
 <body>
 
-<form th:method="PATCH" th:action="@{users}" th:object="${user}"> </form>
-
 <form th:method="PATCH" th:action="@{/users/{id}(id=${user.getId()})}" th:object="${user}">
     <table class="formTable">
         <tbody>

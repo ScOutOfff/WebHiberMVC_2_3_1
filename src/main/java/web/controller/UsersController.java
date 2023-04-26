@@ -29,7 +29,7 @@ public class UsersController {
         return "new";
     }
 
-//    @GetMapping("/{id}")
+//    @GetMapping("users/{id}")
 //    public String show(@PathVariable("id") int id, Model model) {
 //        model.addAttribute("user", userService.getUserById(id));
 //        return "show";
@@ -48,13 +48,13 @@ public class UsersController {
     }
 
     //Need to realize
-    @GetMapping("users/{id}/update")
+    @RequestMapping(value = "users/{id}/update", produces = "application/war", method = {RequestMethod.GET, RequestMethod.POST})
     public String updateUser(Model model, @PathVariable("id") int id) {
         model.addAttribute("user", userService.getUserById(id));
         return "update";
     }
 
-    @RequestMapping(value = "/{id}", produces = "application/war", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "users/{id}", produces = "application/war", method = {RequestMethod.GET, RequestMethod.POST})
     public String update(@ModelAttribute("user") User user, @PathVariable("id") int id) {
         userService.editUser(id, user);
         return "redirect:/users";
