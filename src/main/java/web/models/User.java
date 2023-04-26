@@ -1,7 +1,7 @@
-package web.model;
+package web.models;
 
 public class User {
-    private Long id;
+    private int id;
     private String name;
     private String lastName;
     private String email;
@@ -14,7 +14,14 @@ public class User {
         this.email = email;
     }
 
-    public Long getId() {
+    public User(int id, String name, String lastName, String email) {
+        this.id = id;
+        this.name = name;
+        this.lastName = lastName;
+        this.email = email;
+    }
+
+    public int getId() {
         return id;
     }
 
