@@ -28,6 +28,20 @@ public class UserDaoImp implements UserDao{
     }
 
     @Override
+    public User getUserById(int id) {
+        return users.stream().filter(user -> user.getId() == id).findAny().orElse(null);
+    }
+
+    @Override
+    public void editUser(int id, User user) {
+        User userForUpdate = getUserById(id);
+
+        userForUpdate.setName(user.getName());
+        userForUpdate.setLastName(user.getLastName());
+        userForUpdate.setEmail(user.getEmail());
+    }
+
+    @Override
     public List<User> getUserList() {
         return users;
     }

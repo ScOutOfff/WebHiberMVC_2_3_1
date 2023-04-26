@@ -10,8 +10,12 @@ import web.models.User;
 @Controller
 public class UsersController {
 
+    private final UserDao userService;
+
     @Autowired
-    private UserDao userService;
+    public UsersController(UserDao userService) {
+        this.userService = userService;
+    }
 
     @GetMapping("/users")
     public String getUsers(Model model) {
@@ -25,7 +29,13 @@ public class UsersController {
         return "new";
     }
 
-    @RequestMapping(value = "/users",produces = "application/war",method = RequestMethod.POST)
+//    @GetMapping("/{id}")
+//    public String show(@PathVariable("id") int id, Model model) {
+//        model.addAttribute("user", userService.getUserById(id));
+//        return "show";
+//    }
+
+    @RequestMapping(value = "/users", produces = "application/war", method = RequestMethod.POST)
     public String create(@ModelAttribute("user") User user) {
         userService.add(user);
         return "redirect:users";
@@ -35,5 +45,18 @@ public class UsersController {
     @GetMapping("/delete")
     public String deleteUser(Model model) {
         return "redirect:users";
+    }
+
+    //Need to realize
+    @GetMapping("users/{id}/update")
+    public String updateUser(Model model, @PathVariable("id") int id) {
+        model.addAttribute("user", userService.getUserById(id));
+        return "update";
+    }
+
+    @RequestMapping(value = "/{id}", produces = "application/war", method = {RequestMethod.GET, RequestMethod.POST})
+    public String update(@ModelAttribute("user") User user, @PathVariable("id") int id) {
+        userService.editUser(id, user);
+        return "redirect:/users";
     }
 }
