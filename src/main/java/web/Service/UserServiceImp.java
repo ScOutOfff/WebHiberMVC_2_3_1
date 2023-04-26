@@ -14,6 +14,11 @@ public class UserServiceImp implements UserService {
     private UserDao userDao;
 
     @Override
+    public void add(User user) {
+        userDao.add(user);
+    }
+
+    @Override
     public List<User> getUserList() {
         return userDao.getUserList();
     }

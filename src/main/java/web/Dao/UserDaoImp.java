@@ -21,9 +21,15 @@ public class UserDaoImp implements UserDao{
         users.add(new User(++USER_ID,"Jill", "Valentain","jVal@gmail.com"));
         users.add(new User(++USER_ID,"Cris", "Redfield","umbrella@gmail.com"));
     }
+    @Override
+    public void add(User user) {
+        user.setId(++USER_ID);
+        users.add(user);
+    }
 
     @Override
     public List<User> getUserList() {
         return users;
     }
+
 }

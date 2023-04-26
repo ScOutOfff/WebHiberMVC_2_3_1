@@ -20,6 +20,9 @@ public class User {
         this.lastName = lastName;
         this.email = email;
     }
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getId() {
         return id;
@@ -48,4 +51,5 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
 }
