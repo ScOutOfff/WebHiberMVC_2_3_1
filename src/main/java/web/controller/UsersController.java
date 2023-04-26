@@ -25,4 +25,9 @@ public class UsersController {
         model.addAttribute("user");
         return "new";
     }
+
+    @GetMapping("/delete")
+    public String deleteUser(Model model) {
+        return "users";
+    }
 }

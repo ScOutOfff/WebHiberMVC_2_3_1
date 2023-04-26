@@ -9,28 +9,26 @@
 </head>
 <body>
 
-<div th:each="user : ${users}">
-    <a th:text="${user.getName()}">user</a>
-</div>
-
-<!--<table class="table table-dark">-->
-<!--    <thread>-->
-<!--        <tr>-->
-<!--            <th scope="col">id</th>-->
-<!--            <th scope="col">Name</th>-->
-<!--            <th scope="col">Last Name</th>-->
-<!--            <th scope="col">Email</th>-->
-<!--        </tr>-->
-<!--    </thread>-->
-<!--    <tbody>-->
-<!--    <tr th:each="user : ${users}">-->
-<!--        <td th:text="${user.getId()}"/>-->
-<!--        <td th:text="${user.getName()}"/>-->
-<!--        <td th:text="${user.getLastName()}"/>-->
-<!--        <td th:text="${user.getEmail()}"/>-->
-<!--    </tr>-->
-<!--    </tbody>-->
-<!--</table>-->
+<table class="table table-dark">
+    <thread>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col"/>
+        </tr>
+    </thread>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.getId()}"/>
+        <td th:text="${user.getName()}"/>
+        <td th:text="${user.getLastName()}"/>
+        <td th:text="${user.getEmail()}"/>
+        <td th:href="@{/delete/{id}(id=${user.getId()})}" th:text="DELETE">delete</td>
+    </tr>
+    </tbody>
+</table>
 
 <a href="/new"> Add User</a>
 
