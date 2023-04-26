@@ -42,12 +42,13 @@ public class UsersController {
     }
 
     //Need to realize
-    @GetMapping("/delete")
-    public String deleteUser(Model model) {
-        return "redirect:users";
+    @DeleteMapping(value = "/{id}")
+//    @RequestMapping(value = "/{id}", produces = "application/war", method = RequestMethod.GET)
+    public String deleteUser(@PathVariable("id") int id) {
+        userService.delete(id);
+        return "redirect:/users";
     }
 
-    //Need to realize
     @RequestMapping(value = "users/{id}/update", produces = "application/war", method = {RequestMethod.GET, RequestMethod.POST})
     public String updateUser(Model model, @PathVariable("id") int id) {
         model.addAttribute("user", userService.getUserById(id));

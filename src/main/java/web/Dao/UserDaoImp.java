@@ -42,6 +42,11 @@ public class UserDaoImp implements UserDao{
     }
 
     @Override
+    public void delete(int id) {
+        users.removeIf(user -> user.getId() == id);
+    }
+
+    @Override
     public List<User> getUserList() {
         return users;
     }
