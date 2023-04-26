@@ -4,9 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import web.Dao.UserDao;
-import web.Service.UserService;
 
 @Controller
 public class UsersController {
@@ -28,6 +26,6 @@ public class UsersController {
 
     @GetMapping("/delete")
     public String deleteUser(Model model) {
-        return "users";
+        return "delete";
     }
 }
