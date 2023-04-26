@@ -3,10 +3,7 @@ package web.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import web.Dao.UserDao;
 import web.models.User;
 
@@ -28,8 +25,8 @@ public class UsersController {
         return "new";
     }
 
-    @PostMapping()
-    public String create(@ModelAttribute("USER") User user) {
+    @RequestMapping(value = "/users",produces = "application/war",method = RequestMethod.POST)
+    public String create(@ModelAttribute("user") User user) {
         userService.add(user);
         return "redirect:users";
     }
@@ -37,6 +34,6 @@ public class UsersController {
     //Need to realize
     @GetMapping("/delete")
     public String deleteUser(Model model) {
-        return "delete";
+        return "redirect:users";
     }
 }
