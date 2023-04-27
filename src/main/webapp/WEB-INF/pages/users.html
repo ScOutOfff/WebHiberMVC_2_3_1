@@ -27,7 +27,7 @@
         <td th:text="${user.getLastName()}"/>
         <td th:text="${user.getEmail()}"/>
         <td><a th:href="@{users/{id}/update(id=${user.getId()})}" th:text="EDIT"/></td>
-        <td><form th:method="DELETE" th:action="@{/users/{id}(id=${user.getId()})}">
+        <td><form th:method="DELETE" th:action="@{/users/{id}/delete(id=${user.getId()})}">
             <input type="submit" value="DELETE"/>
         </form></td>
     </tr>

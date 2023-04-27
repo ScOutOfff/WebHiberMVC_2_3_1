@@ -19,22 +19,23 @@ public class UserDaoImp implements UserDao{
     @PersistenceContext
     private EntityManager entityManager;
 
-    @Override
     @Transactional
+    @Override
     public void add(User user) {
+        System.out.println("adding a User is now work!");
         entityManager.persist(user);
-//        user.setId(++USER_ID);
-//        users.add(user);
     }
 
+    @Transactional
     @Override
     public User getUserById(int id) {
-//        return users.stream().filter(user -> user.getId() == id).findAny().orElse(null);
+        System.out.println("getUserById is now work!");
         return entityManager.find(User.class, id);
     }
 
     @Override
     public void editUser(int id, User user) {
+        System.out.println("editUser is now work!");
 //        User userForUpdate = getUserById(id);
 //
 //        userForUpdate.setName(user.getName());
@@ -42,16 +43,19 @@ public class UserDaoImp implements UserDao{
 //        userForUpdate.setEmail(user.getEmail());
     }
 
+    //DONT WORK
+    @Transactional
     @Override
     public void delete(int id) {
+        System.out.println("delete Method is now work!");
         entityManager.remove(getUserById(id));
-//        users.removeIf(user -> user.getId() == id);
     }
 
     @Transactional
     @Override
     @SuppressWarnings("unchecked")
     public List<User> getUserList() {
+        System.out.println("getUserList is now work!");
         return entityManager.createQuery("FROM User", User.class).getResultList();
     }
 

@@ -29,12 +29,6 @@ public class UsersController {
         return "new";
     }
 
-//    @GetMapping("users/{id}")
-//    public String show(@PathVariable("id") int id, Model model) {
-//        model.addAttribute("user", userService.getUserById(id));
-//        return "show";
-//    }
-
     @RequestMapping(value = "/users", produces = "application/war", method = RequestMethod.POST)
     public String create(@ModelAttribute("user") User user) {
         userService.add(user);
@@ -42,13 +36,15 @@ public class UsersController {
     }
 
     //Need to realize
-    @DeleteMapping(value = "/{id}")
+//    @DeleteMapping(value = "users/{id}/delete")
 //    @RequestMapping(value = "/{id}", produces = "application/war", method = RequestMethod.GET)
+    @RequestMapping(value = "users/{id}/delete", produces = "application/war", method = {RequestMethod.GET, RequestMethod.POST})
     public String deleteUser(@PathVariable("id") int id) {
         userService.delete(id);
         return "redirect:/users";
     }
 
+    //Need to realize
     @RequestMapping(value = "users/{id}/update", produces = "application/war", method = {RequestMethod.GET, RequestMethod.POST})
     public String updateUser(Model model, @PathVariable("id") int id) {
         model.addAttribute("user", userService.getUserById(id));

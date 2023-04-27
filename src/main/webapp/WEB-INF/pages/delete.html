@@ -1,10 +1,21 @@
 <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Confirmation</title>
+    <title>Delete confirmation</title>
 </head>
 <body>
-<a> Are u sure u wanna delete it?</a>
+<form th:method="PATCH" th:action="@{/users/{id}(id=${user.getId()})}" th:object="${user}">
+    <table class="formTable">
+        <tbody>
+        <tr>
+            <td th:text="${user.getName()}"/>
+            <td th:text="${user.getLastName()}"/>
+            <td th:text="${user.getEmail()}"/>
+    </table>
+    <input type="submit" value="Delete User"/>
+</form>
+<a> You wanna delete "${user.getName}"</a>
 </body>
 </html>
