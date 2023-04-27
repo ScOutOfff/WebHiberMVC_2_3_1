@@ -1,7 +1,5 @@
 package web.Dao;
 
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,8 +7,6 @@ import web.models.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
-import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -34,7 +30,7 @@ public class UserDaoImp implements UserDao{
     @Override
     public User getUserById(int id) {
 //        return users.stream().filter(user -> user.getId() == id).findAny().orElse(null);
-        return null;
+        return entityManager.find(User.class, id);
     }
 
     @Override
@@ -48,6 +44,7 @@ public class UserDaoImp implements UserDao{
 
     @Override
     public void delete(int id) {
+        entityManager.remove(getUserById(id));
 //        users.removeIf(user -> user.getId() == id);
     }
 
