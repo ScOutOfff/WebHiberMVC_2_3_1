@@ -13,9 +13,6 @@ import java.util.List;
 @Component
 public class UserDaoImp implements UserDao{
 
-//    @Autowired
-//    private SessionFactory sessionFactory;
-
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -38,11 +35,6 @@ public class UserDaoImp implements UserDao{
     public void editUser(int id, User user) {
         System.out.println("editUser is now work!");
         entityManager.merge(user);
-//        User userForUpdate = getUserById(id);
-//
-//        userForUpdate.setName(user.getName());
-//        userForUpdate.setLastName(user.getLastName());
-//        userForUpdate.setEmail(user.getEmail());
     }
 
     //DONT WORK
