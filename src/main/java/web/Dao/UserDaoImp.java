@@ -33,9 +33,11 @@ public class UserDaoImp implements UserDao{
         return entityManager.find(User.class, id);
     }
 
+    @Transactional
     @Override
     public void editUser(int id, User user) {
         System.out.println("editUser is now work!");
+        entityManager.merge(user);
 //        User userForUpdate = getUserById(id);
 //
 //        userForUpdate.setName(user.getName());
@@ -55,7 +57,7 @@ public class UserDaoImp implements UserDao{
     @Override
     @SuppressWarnings("unchecked")
     public List<User> getUserList() {
-        System.out.println("getUserList is now work!");
+        System.err.println("\ngetUserList is now work!\n");
         return entityManager.createQuery("FROM User", User.class).getResultList();
     }
 
