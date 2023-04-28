@@ -1,4 +1,4 @@
-package web.model;
+package web.models;
 
 import org.hibernate.annotations.GenericGenerator;
 

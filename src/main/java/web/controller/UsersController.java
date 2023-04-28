@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import web.service.UserService;
-import web.model.User;
+import web.Service.UserService;
+import web.models.User;
 
 @Controller
 public class UsersController {
@@ -17,12 +17,14 @@ public class UsersController {
         this.userService = userService;
     }
 
+    //List of All users________________________________________________________
     @GetMapping("/users")
     public String getUsers(Model model) {
         model.addAttribute("users", userService.getUserList());
         return "users";
     }
 
+    //Adding a new User_________________________________________________________
     @GetMapping("/new")
     public String addUser(Model model) {
         model.addAttribute("user", new User());
@@ -35,20 +37,21 @@ public class UsersController {
         return "redirect:users";
     }
 
-    @RequestMapping(value = "users/{id}/delete", produces = "application/war", method = {RequestMethod.GET, RequestMethod.POST})
+    //Deleting a User_________________________________________________________________
+    @RequestMapping(value = "users/{id}/delete", produces = "application/war", method = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE})
     public String deleteUser(@PathVariable("id") int id) {
         userService.delete(id);
         return "redirect:/users";
     }
 
-    //Need to realize
-    @RequestMapping(value = "users/{id}/update", produces = "application/war", method = {RequestMethod.GET, RequestMethod.POST})
+    //Editing a User_____________________________________________________________________
+    @RequestMapping(value = "users/{id}/update", produces = "application/war", method = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PATCH})
     public String updateUser(Model model, @PathVariable("id") int id) {
         model.addAttribute("user", userService.getUserById(id));
         return "update";
     }
 
-    @RequestMapping(value = "users/{id}", produces = "application/war", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "users/{id}", produces = "application/war", method = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PATCH})
     public String update(@ModelAttribute("user") User user, @PathVariable("id") int id) {
         userService.editUser(id, user);
         return "redirect:/users";
