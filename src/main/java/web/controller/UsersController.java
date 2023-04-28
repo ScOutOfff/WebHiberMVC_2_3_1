@@ -4,16 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import web.Dao.UserDao;
-import web.models.User;
+import web.service.UserService;
+import web.model.User;
 
 @Controller
 public class UsersController {
 
-    private final UserDao userService;
+    private final UserService userService;
 
     @Autowired
-    public UsersController(UserDao userService) {
+    public UsersController(UserService userService) {
         this.userService = userService;
     }
 

@@ -1,10 +1,9 @@
-package web.Service;
+package web.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import web.Dao.UserDao;
-import web.models.User;
+import web.dao.UserDao;
+import web.model.User;
 
 import java.util.List;
 
@@ -31,5 +30,15 @@ public class UserServiceImp implements UserService {
     @Override
     public List<User> getUserList() {
         return userDao.getUserList();
+    }
+
+    @Override
+    public void delete(int id) {
+        userDao.delete(id);
+    }
+
+    @Override
+    public void editUser(int id, User user) {
+        userDao.editUser(id, user);
     }
 }
