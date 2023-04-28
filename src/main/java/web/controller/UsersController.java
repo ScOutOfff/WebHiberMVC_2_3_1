@@ -38,7 +38,7 @@ public class UsersController {
     }
 
     //Deleting a User_________________________________________________________________
-    @RequestMapping(value = "users/{id}/delete", produces = "application/war", method = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE})
+    @DeleteMapping(value = "users/{id}/delete")
     public String deleteUser(@PathVariable("id") int id) {
         userService.delete(id);
         return "redirect:/users";
