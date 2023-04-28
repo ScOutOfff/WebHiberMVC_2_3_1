@@ -45,7 +45,6 @@ public class UsersController {
     }
 
     //Editing a User_____________________________________________________________________
-//    @RequestMapping(value = "users/{id}/update", produces = "application/war", method = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PATCH})
     @GetMapping(value = "users/{id}/update")
     public String updateUser(Model model, @PathVariable("id") int id) {
         model.addAttribute("user", userService.getUserById(id));
