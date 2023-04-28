@@ -31,7 +31,7 @@ public class UsersController {
         return "new";
     }
 
-    @RequestMapping(value = "/users", produces = "application/war", method = RequestMethod.POST)
+    @PostMapping(value = "/users")
     public String create(@ModelAttribute("user") User user) {
         userService.add(user);
         return "redirect:users";
@@ -45,13 +45,14 @@ public class UsersController {
     }
 
     //Editing a User_____________________________________________________________________
-    @RequestMapping(value = "users/{id}/update", produces = "application/war", method = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PATCH})
+//    @RequestMapping(value = "users/{id}/update", produces = "application/war", method = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PATCH})
+    @GetMapping(value = "users/{id}/update")
     public String updateUser(Model model, @PathVariable("id") int id) {
         model.addAttribute("user", userService.getUserById(id));
         return "update";
     }
 
-    @RequestMapping(value = "users/{id}", produces = "application/war", method = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PATCH})
+    @PatchMapping(value = "users/{id}")
     public String update(@ModelAttribute("user") User user, @PathVariable("id") int id) {
         userService.editUser(id, user);
         return "redirect:/users";
