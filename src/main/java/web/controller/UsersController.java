@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import web.Service.UserService;
-import web.models.User;
+import web.model.User;
 
 @Controller
 public class UsersController {
